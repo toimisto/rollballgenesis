@@ -30,6 +30,8 @@ func _on_Input_text_entered(new_text):
             $Output.append_bbcode("[color=#FF0000]NO![/color]")
         "no":
             $Output.append_bbcode("[color=#FFFF00]Yes![/color]")
+        "luuranki":
+            $Output.append_bbcode("[color=#FFFF00]Oispa[/color]")
         _:
             $Output.append_bbcode("[color=#88ffffff]Nani!?[/color]")
     $Output.margin_top = 320 + (4-$Output.get_line_count())*48
