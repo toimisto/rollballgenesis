@@ -6,6 +6,8 @@ extends Control
 
 var fadeaway = false
 
+signal killshinji
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     pass # Replace with function body.
@@ -32,6 +34,7 @@ func _on_Input_text_entered(new_text):
             $Output.append_bbcode("[color=#FFFF00]Yes![/color]")
         "luuranki":
             $Output.append_bbcode("[color=#FFFF00]Oispa[/color]")
+            emit_signal("killshinji")
         _:
             $Output.append_bbcode("[color=#88ffffff]Nani!?[/color]")
     $Output.margin_top = 320 + (4-$Output.get_line_count())*48

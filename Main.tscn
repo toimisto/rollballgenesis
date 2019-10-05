@@ -8,3 +8,4 @@
 [node name="Level" parent="." instance=ExtResource( 1 )]
 
 [node name="Control" parent="." instance=ExtResource( 2 )]
+[connection signal="killshinji" from="Control" to="Level" method="_on_Control_killshinji"]
