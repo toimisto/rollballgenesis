@@ -1,14 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="SphereShape" id=5]
 
-[sub_resource type="SphereMesh" id=2]
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
 
-[node name="Shinji" type="KinematicBody"]
+[sub_resource type="SphereMesh" id=3]
+material = SubResource( 4 )
+
+[node name="Shinji" type="RigidBody"]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 material/0 = null
