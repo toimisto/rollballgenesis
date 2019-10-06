@@ -1,23 +1,30 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/Level.gd" type="Script" id=1]
-[ext_resource path="res://assets/textures/ground.png" type="Texture" id=2]
-[ext_resource path="res://scenes/Shinji.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scripts/Shinji.gd" type="Script" id=4]
-[ext_resource path="res://scripts/Camera.gd" type="Script" id=5]
-[ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/textures/box.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/ground.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Shinji.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/Shinji.gd" type="Script" id=5]
+[ext_resource path="res://scripts/Camera.gd" type="Script" id=6]
+[ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=7]
 
 [sub_resource type="BoxShape" id=1]
 
+[sub_resource type="SpatialMaterial" id=6]
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 3, 2, 1 )
+uv2_scale = Vector3( 2, 2, 2 )
+
 [sub_resource type="CubeMesh" id=2]
+material = SubResource( 6 )
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 15, 1, 15 )
 
 [sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.784314, 0.92549, 0.780392, 1 )
-albedo_texture = ExtResource( 2 )
-uv1_scale = Vector3( 100, 80, 100 )
+albedo_texture = ExtResource( 3 )
+uv1_scale = Vector3( 100, 50, 1 )
 
 [sub_resource type="CubeMesh" id=5]
 material = SubResource( 4 )
@@ -37,6 +44,7 @@ transform = Transform( 1, 0, 4.47035e-08, 0, 1, -9.31323e-10, 0, 1.86265e-09, 1,
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Box"]
+transform = Transform( 1, 2.23517e-08, 0, 0, 1, 8.10251e-08, 1.49012e-08, 6.51926e-09, 1, 0.0102922, 0.00459194, -0.00181293 )
 mesh = SubResource( 2 )
 material/0 = null
 
@@ -51,18 +59,18 @@ transform = Transform( 1, -7.45058e-09, 0, 0, 1, 0, 0, 0, 1, 0.00143495, 0, 6.01
 mesh = SubResource( 5 )
 material/0 = null
 
-[node name="Shinji" parent="." instance=ExtResource( 3 )]
+[node name="Shinji" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06083, 0 )
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="Camera" type="Camera" parent="Shinji"]
 transform = Transform( 1, 0, 0, 0, 0.839874, 0.542782, 0, -0.542782, 0.839874, 0, 4.34049, 7.28941 )
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="Camera2D" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 100 )
 projection = 1
 size = 20.0
 
-[node name="Goal" parent="." instance=ExtResource( 6 )]
+[node name="Goal" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1.4507, 0, 0.381402, 0, 1.5, 0, -0.381402, 0, 1.4507, 4.62512, 0.0164497, -48.2431 )

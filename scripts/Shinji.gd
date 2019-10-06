@@ -1,6 +1,6 @@
 extends RigidBody
 
-const movementSpeed = 50
+const movementSpeed = 5
 
 func _ready():
     set_angular_damp(0.1)
