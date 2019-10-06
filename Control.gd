@@ -22,23 +22,22 @@ func _process(delta):
 #
 
 func _on_Input_text_entered(new_text):
+    $Input.text =""
+    get_parent().on_input(new_text)
+    
+
+
+
+func output(text):
     $Output.clear()
     $Output.text = " "
     $Output.modulate.a = 0
     $FadeTimer.start()
     fadeaway = false
-    match new_text.to_lower():
-        "yes":
-            $Output.append_bbcode("[color=#FF0000]NO![/color]")
-        "no":
-            $Output.append_bbcode("[color=#FFFF00]Yes![/color]")
-        "luuranki":
-            $Output.append_bbcode("[color=#FFFF00]Oispa[/color]")
-            emit_signal("killshinji")
-        _:
-            $Output.append_bbcode("[color=#88ffffff]Nani!?[/color]")
+    $Output.append_bbcode(text)
     $Output.margin_top = 320 + (4-$Output.get_line_count())*48
-    $Input.text =""
+    
+
 
 
 func _on_FadeTimer_timeout():
