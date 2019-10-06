@@ -12,8 +12,7 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    $Level.select_camera(s.dimension)
-    pass # Replace with function body.
+    $Level.select_dimension(s.dimension)
 
 func on_input(input):
 
@@ -54,11 +53,11 @@ func on_input(input):
             if s["dimension"] == 2:
                 $Control.output("[color=#FF5500]3D[/color].")
                 s["dimension"] = 3
-                $Level.select_camera(3)
+                $Level.select_dimension(3)
             else:
                 $Control.output("[color=#FF5500]2D[/color].")
                 s["dimension"] = 2
-                $Level.select_camera(2)
+                $Level.select_dimension(2)
             
         _:
             $Control.output("[color=#FF0000]Nani?![/color]")

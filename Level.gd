@@ -1,22 +1,23 @@
 extends Spatial
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
 var SAFESPACE = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
     pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#    pass
 
-func select_camera(dimension):
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+    pass
+
+func select_dimension(dimension):
     if dimension == 2:
         $Camera2D.make_current()
+        $Shinji.set_axis_lock(4, 1)
     elif dimension == 3:
         $Shinji/Camera.make_current()
+        $Shinji.set_axis_lock(4, 0)
 
 func toggle_object(object):
     if get_node(object):
