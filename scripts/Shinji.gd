@@ -1,9 +1,9 @@
 extends RigidBody
 
-const movementSpeed = 25
+const movementSpeed = 50
 
 func _ready():
-    set_angular_damp(1000)
+    set_angular_damp(0.1)
 
 func _physics_process(delta):
     var xSpeed = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -13,8 +13,8 @@ func _physics_process(delta):
 
     if get_axis_lock(4):
         zSpeed = 0
-
-    add_torque(Vector3(-zSpeed, 0, xSpeed) * movementSpeed * -5)
+    
+    
+    add_torque(Vector3(-zSpeed, 0, xSpeed) * movementSpeed * -1)
     if gravity_scale != 0:
         add_central_force(movementVec)
-    
