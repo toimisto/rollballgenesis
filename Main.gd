@@ -33,21 +33,21 @@ func on_input(input):
             if s["ground"]:
                 $Control.output("Removed [color=#FF5500]ground[/color].")
                 s["ground"] = false
-                $Level.ToggleObject("Floor")
+                $Level.toggle_object("Floor")
             else:
                 $Control.output("Now you have a [color=#FF5500]ground[/color]. \n Very nice.")
                 s["ground"] = true
-                $Level.ToggleObject("Floor")
+                $Level.toggle_object("Floor")
         "gravity":
             help = 0
             if s["gravity"]:
                 $Control.output("Removed [color=#FF5500]gravity[/color].")
                 s["gravity"] = false
-                $Level.ToggleGravity(0)
+                $Level.toggle_gravity(0)
             else:
                 $Control.output("Now you have a [color=#FF5500]gravity[/color]. \n Very nice.")
                 s["gravity"] = true
-                $Level.ToggleGravity(1)
+                $Level.toggle_gravity(1)
             
         _:
             $Control.output("[color=#FF0000]Nani?![/color]")
