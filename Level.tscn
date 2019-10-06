@@ -51,3 +51,8 @@ script = ExtResource( 3 )
 [node name="Camera" type="Camera" parent="Shinji"]
 transform = Transform( 1, 0, 0, 0, 0.839874, 0.542782, 0, -0.542782, 0.839874, 0, 4.34049, 7.28941 )
 script = ExtResource( 4 )
+
+[node name="Camera2D" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.563446, 0, 40.922 )
+projection = 1
+size = 20.0
