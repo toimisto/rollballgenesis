@@ -3,7 +3,7 @@ extends RigidBody
 const movementSpeed = 25
 
 func _ready():
-    pass
+    set_angular_damp(1)
 
 func _physics_process(delta):
     var xSpeed = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
