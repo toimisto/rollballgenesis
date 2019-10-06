@@ -60,4 +60,4 @@ projection = 1
 size = 20.0
 
 [node name="Goal" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1.4507, 0, 0.381402, 0, 1.5, 0, -0.381402, 0, 1.4507, 4.62512, 0.0164497, -26.7959 )
+transform = Transform( 1.4507, 0, 0.381402, 0, 1.5, 0, -0.381402, 0, 1.4507, 4.62512, 0.0164497, -48.2431 )
