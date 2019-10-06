@@ -2,7 +2,7 @@ extends Spatial
 
 #state dict
 var s = {
-    ground = false,
+    ground = true,
     gravity = false,
     dimension = 2,
     goal = false
@@ -12,6 +12,7 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    $Level.select_camera(s.dimension)
     pass # Replace with function body.
 
 func on_input(input):
@@ -48,6 +49,16 @@ func on_input(input):
                 $Control.output("Now you have a [color=#FF5500]gravity[/color]. \n Very nice.")
                 s["gravity"] = true
                 $Level.toggle_gravity(1)
+        "dimension":
+            help = 0
+            if s["dimension"] == 2:
+                $Control.output("[color=#FF5500]3D[/color].")
+                s["dimension"] = 3
+                $Level.select_camera(3)
+            else:
+                $Control.output("[color=#FF5500]2D[/color].")
+                s["dimension"] = 2
+                $Level.select_camera(2)
             
         _:
             $Control.output("[color=#FF0000]Nani?![/color]")
