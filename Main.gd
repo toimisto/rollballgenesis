@@ -33,11 +33,11 @@ func on_input(input):
             if s["ground"]:
                 $Control.output("Removed [color=#FF5500]ground[/color].")
                 s["ground"] = false
-                #call for removing ground (level.remove("ground"))
+                $Level.ToggleObject("Floor")
             else:
                 $Control.output("Now you have a [color=#FF5500]ground[/color]. \n Very nice.")
                 s["ground"] = true
-                #call for level.add("ground") ?
+                $Level.ToggleObject("Floor")
             
         _:
             $Control.output("[color=#FF0000]Nani?![/color]")

@@ -3,7 +3,8 @@ extends Spatial
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var DIM = 2
+var DIM = 3
+var SAFESPACE = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +20,11 @@ func SelectCamera(dimension):
     elif dimension == 3:
         $Shinji/Camera.make_current()
 
-func _on_Control_killshinji():
-    if $Floor:
-        get_node("Floor").queue_free()
+func ToggleObject(object):
+    if get_node(object):
+        SAFESPACE[object] = get_node(object)
+        remove_child(get_node(object))
+        $Shinji.add_central_force(Vector3(0, 0, 0))
+    else:
+        add_child(SAFESPACE[object])
     
