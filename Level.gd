@@ -24,7 +24,8 @@ func ToggleObject(object):
     if get_node(object):
         SAFESPACE[object] = get_node(object)
         remove_child(get_node(object))
-        $Shinji.add_central_force(Vector3(0, 0.00000001, 0))
     else:
         add_child(SAFESPACE[object])
-    
+
+func ToggleGravity(gravity):
+    $Shinji.set_gravity_scale(gravity)

@@ -4,7 +4,7 @@ extends Spatial
 var s = {
     ground = false,
     gravity = false,
-    dimension = false,
+    dimension = 2,
     goal = false
    }
 var help = 0
@@ -38,6 +38,16 @@ func on_input(input):
                 $Control.output("Now you have a [color=#FF5500]ground[/color]. \n Very nice.")
                 s["ground"] = true
                 $Level.ToggleObject("Floor")
+        "gravity":
+            help = 0
+            if s["gravity"]:
+                $Control.output("Removed [color=#FF5500]gravity[/color].")
+                s["gravity"] = false
+                $Level.ToggleGravity(0)
+            else:
+                $Control.output("Now you have a [color=#FF5500]gravity[/color]. \n Very nice.")
+                s["gravity"] = true
+                $Level.ToggleGravity(1)
             
         _:
             $Control.output("[color=#FF0000]Nani?![/color]")
