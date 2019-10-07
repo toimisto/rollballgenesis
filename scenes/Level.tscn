@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/box.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scripts/Shinji.gd" type="Script" id=5]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=6]
 [ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/textures/wall.png" type="Texture" id=8]
 
 [sub_resource type="Environment" id=10]
 background_mode = 1
@@ -38,7 +39,8 @@ subdivide_width = 10
 subdivide_height = 10
 
 [sub_resource type="SpatialMaterial" id=7]
-albedo_color = Color( 0.772549, 0, 0, 1 )
+albedo_texture = ExtResource( 8 )
+uv1_triplanar = true
 
 [sub_resource type="CubeMesh" id=8]
 material = SubResource( 7 )
@@ -94,7 +96,6 @@ size = 20.0
 transform = Transform( 1.4507, 0, 0.381402, 0, 1.5, 0, -0.381402, 0, 1.4507, 4.62512, 0.0164497, -48.2431 )
 
 [node name="Walls" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="wall" type="StaticBody" parent="Walls"]
 transform = Transform( -2.18557e-08, 0, 6, 0, 2, 0, -0.5, 0, -2.62268e-07, 0, 2, -16.567 )
