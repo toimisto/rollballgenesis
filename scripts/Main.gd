@@ -198,21 +198,21 @@ func on_input(input):
         "gravity":
             help = 0
             if s["gravity"]:
-                $Control.output("Removed [color=#FF5500]gravity[/color].")
+                $Control.output("[color=#FF5500]Gravity[/color] is no more.")
                 s["gravity"] = 0
                 $Level.toggle_gravity(0)
             else:
-                $Control.output("Now you have a [color=#FF5500]gravity[/color]. \n Very nice.")
+                $Control.output("what goes up must come down.")
                 s["gravity"] = 1
                 $Level.toggle_gravity(1)
         "dimension":
             help = 0
             if s["dimension"] == 2:
-                $Control.output("[color=#FF5500]3D[/color].")
+                $Control.output("Everythin now in three [color=#FF5500]dimension[/color]s!")
                 s["dimension"] = 3
                 $Level.select_dimension(3)
             else:
-                $Control.output("[color=#FF5500]2D[/color].")
+                $Control.output("2D time.")
                 s["dimension"] = 2
                 $Level.select_dimension(2)
         "reset":
@@ -235,6 +235,12 @@ func get_help():
             "So you fell?",
             "Wheeeee",
             "Okay. Sorry for that.\n Type [color=yellow]reset[/color] anytime to get back up!"        
+        ]
+        return get_helped(h)
+    if $Level.POINTS == 10:
+        h = [
+        "You have collected all hearts! \n If you are happy now, you can add [color=#FF5500]ending[/color]",
+        "Still not happy? Maybe you should try another game :("
         ]
         return get_helped(h)
     
