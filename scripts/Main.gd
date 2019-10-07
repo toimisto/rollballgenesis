@@ -64,7 +64,9 @@ func on_input(input):
                 $Control.output("[color=#FF5500]2D[/color].")
                 s["dimension"] = 2
                 $Level.select_dimension(2)
-            
+        "reset":
+            $Control.output("[color=#FF5500]Reset[/color].")
+            $Level.reset_shinji()
         _:
             $Control.output("[color=#FF0000]Nani?![/color]")
             
