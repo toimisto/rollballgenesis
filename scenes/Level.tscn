@@ -172,7 +172,6 @@ mesh = SubResource( 12 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/wall2"]
-<<<<<<< HEAD
 shape = SubResource( 10 )
 
 [node name="Hearts" type="Spatial" parent="."]
@@ -181,7 +180,4 @@ shape = SubResource( 10 )
 transform = Transform( -0.974898, 0, 0.222654, 0, 1, 0, -0.222654, 0, -0.974898, 0, 1.79709, 6.99085 )
 script = ExtResource( 12 )
 [connection signal="body_entered" from="Shinji" to="." method="_on_Shinji_body_entered"]
-=======
-shape = SubResource( 13 )
->>>>>>> dad196ed09904df4acb69f9e67baaa853257eefc
 [connection signal="body_entered" from="Goal" to="." method="_on_Goal_body_entered"]
