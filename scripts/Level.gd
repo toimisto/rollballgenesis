@@ -3,11 +3,13 @@ extends Spatial
 export (PackedScene) var Grass
 
 var SAFESPACE = {}
+var grasses = []
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
     SAFESPACE["Shinji"] = $Shinji.get_global_transform()
-    toggle_grass(true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -18,7 +20,11 @@ func toggle_grass(toggle):
         for i in range(500):
             var grass = Grass.instance()
             add_child(grass)
+            grasses.append(grass)
             grass.set_global_transform(Transform(Vector3(1,0,0),Vector3(0,1,0),Vector3(0,0,1),Vector3(randf()*150-75,0,randf()*150-75)))
+    else:
+        for grass in grasses:
+            remove_child(grass)
 
 func select_dimension(dimension):
     if dimension == 2:
