@@ -57,3 +57,6 @@ func reset_shinji():
     $Shinji.set_global_transform(SAFESPACE["Shinji"])
     $Shinji.set_angular_velocity(Vector3(0, 0, 0))
     $Shinji.set_linear_velocity(Vector3(0, 0, 0))
+
+func _on_Goal_body_entered(body):
+    print("testi")

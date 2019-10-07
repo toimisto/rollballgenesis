@@ -13,8 +13,7 @@ func _physics_process(delta):
 
     if get_axis_lock(4):
         zSpeed = 0
-    
-    
+
     add_torque(Vector3(-zSpeed, 0, xSpeed) * movementSpeed * -1)
     if gravity_scale != 0:
         add_central_force(movementVec)

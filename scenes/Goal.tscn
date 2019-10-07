@@ -159,7 +159,7 @@ tracks/7/keys = {
 radius = 0.1
 height = 4.0
 
-[node name="Goal" type="StaticBody"]
+[node name="Goal" type="Area"]
 transform = Transform( 0.967134, 0, 0.254268, 0, 1, 0, -0.254268, 0, 0.967134, 0.172229, 3.53497, -0.0483767 )
 script = ExtResource( 1 )
 
