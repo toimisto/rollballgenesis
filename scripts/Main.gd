@@ -15,7 +15,12 @@ var s = {
     hearts = false,
     bridges = false
     }
+
 var help = 0
+var challenge = 0
+var freedom = 0
+var environment = 0
+
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -45,6 +50,13 @@ func on_input(input):
         "help":
             $Control.output(get_help())
             help += 1
+        "challenge":
+            help = 0
+            $Control.output("[color=yellow]challenge[/color]s are nice indeed \n ask [color=yellow]help[/color] for more information on them.")
+            challenge = 1
+            environment = 0
+            freedom = 0
+            
             
         "music":
             help = 0
@@ -94,7 +106,7 @@ func on_input(input):
                 $Level.toggle_object("Boxes")
                 
             else:
-                $Control.output("[color=#FF5500]Boxes[/color]! Woop!/n you can push the boxes around")
+                $Control.output("[color=#FF5500]Boxes[/color]! Woop!\n you can push the boxes around")
                 s[input] = true
                 $Level.toggle_object("Boxes")
                 $Level.toggle_gravity(s["gravity"])
@@ -183,6 +195,13 @@ func on_input(input):
 
 func get_help():
     var h = []
+    if $Level.is_shinji_falling():
+        h = [
+            "So you fell?",
+            "Wheeeee",
+            "Okay. Sorry for that.\n Type [color=yellow]reset[/color] anytime to get back up!"        
+        ]
+    
     if not s["ground"] and not s["gravity"]:
         h = [
             "Don't worry, I am here to [color=yellow]help[/color] you.",
@@ -190,7 +209,7 @@ func get_help():
             "You can rotate yoursefl with arrow keys",
             "You might want to stand on something",
             "Try adding [color=#FF5500]ground[/color].",
-            "Just type [color=#FF5500]ground[/color] instead of  [color=yellow]help[/color]."
+            "Just type [color=#FF5500]ground[/color] instead of [color=yellow]help[/color]."
         ]
         return get_helped(h)
     if not s["gravity"] and s["ground"]:
@@ -207,17 +226,24 @@ func get_help():
             "uh oh. I see you added [color=#FF5500]gravity[/color] but no a [color=#FF5500]ground[/color].",
         ]
         return get_helped(h)
-    if s["gravity"] and s["ground"] and not s["dimension"]:
-        
+    if s["gravity"] and s["ground"] and s["dimension"] == 2 and not challenge and not freedom and not environment:        
         h = [
             "whoa. Now you can go anywhere we want!",
             "And with anywhere I mean left and right..",
-            "What do you like? For now I can tell you about few things:\n [color=yellow]Nature[/color], [color=yellow]challenge[/color] or [color=yellow]freedom[/color]",
+            "What do you like? For now I can tell you about few things:\n [color=yellow]challenge[/color], [color=yellow]freedom[/color] or [color=yellow]environment[/color]",
             "Would you like to hear a [color=yellow]story[/color] instead?"
         ]
         return get_helped(h)
-    else:
-        return "Sorry I am a derp."
+    if challenge:
+        h = [
+            "Challenges are about doing something. \n They might be easy or hard.",
+            "To make a challenge: add a [color=#FF5500]goal[/color]!",
+            "Try reaching the flag!"
+        ]
+        if s["dimension"] == 2:
+            h[2] = "You might not be able to reach the goal with the [color=yellow]freedom[/color] that you have."
+        return get_helped(h)
+    return "Sorry I am a derp."
 
 
 func get_helped(h):
