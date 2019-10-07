@@ -52,10 +52,32 @@ func on_input(input):
             help += 1
         "challenge":
             help = 0
-            $Control.output("[color=yellow]challenge[/color]s are nice indeed \n ask [color=yellow]help[/color] for more information on them.")
-            challenge = 1
-            environment = 0
-            freedom = 0
+            if challenge:
+                $Control.output("Would you like to hear about [color=yellow]freedom[/color] or [color=yellow]environment[/color] instead?")
+            else:
+                $Control.output("[color=yellow]Challenge[/color]s are nice indeed \n ask [color=yellow]help[/color] for more information on them.")
+                challenge = 1
+                environment = 0
+                freedom = 0
+                
+        "freedom":
+            help = 0
+            if freedom:
+                $Control.output("Would you like to hear about [color=yellow]challenge[/color] or [color=yellow]environment[/color] instead?")
+            else:
+                $Control.output("[color=yellow]Freedom[/color] is the ability to go somewhere else. \n ask [color=yellow]help[/color] for more.")
+                challenge = 0
+                environment = 0
+                freedom = 1     
+        "environment":
+            help = 0
+            if environment:
+                $Control.output("Would you like to hear about [color=yellow]challenge[/color] or [color=yellow]freedom[/color] instead?")
+            else:
+                $Control.output("[color=yellow]challenge[/color]s are nice indeed \n ask [color=yellow]help[/color] for more information on them.")
+                challenge = 0
+                environment = 1
+                freedom = 0
             
             
         "music":
@@ -201,6 +223,7 @@ func get_help():
             "Wheeeee",
             "Okay. Sorry for that.\n Type [color=yellow]reset[/color] anytime to get back up!"        
         ]
+        return get_helped(h)
     
     if not s["ground"] and not s["gravity"]:
         h = [
@@ -234,14 +257,38 @@ func get_help():
             "Would you like to hear a [color=yellow]story[/color] instead?"
         ]
         return get_helped(h)
-    if challenge:
+    if challenge and not s["goal"]:
         h = [
             "Challenges are about doing something. \n They might be easy or hard.",
-            "To make a challenge: add a [color=#FF5500]goal[/color]!",
+            "To make a challenge: add a [color=#FF5500]goal[/color]!"
+        ]
+        return get_helped(h)
+    if challenge and s["goal"]:
+        h = [
             "Try reaching the flag!"
         ]
         if s["dimension"] == 2:
-            h[2] = "You might not be able to reach the goal with the [color=yellow]freedom[/color] that you have."
+            h = ["You might not be able to reach the goal with the [color=yellow]freedom[/color] that you have."]
+        return get_helped(h)
+    if freedom and s["dimension"] == 2:
+        h = [
+            "Until now I have only quided you to restrict your [color=yellow]freedom[/color].",
+            "With [color=yellow]freedom[/color] comes responsibility, I'm sure you can take it.",
+            "Try adding another [color=#FF5500]dimension[/color]"
+        ]
+        return get_helped(h)
+    if freedom and s["dimension"] == 3:
+        h = [
+            "Thats all the [color=yellow]freedom[/color] I can give to you.",
+            "Would you like to hear about [color=yellow]challenge[/color] or [color=yellow]environment[/color] instead?"
+        ]
+        return get_helped(h)
+    if environment:
+        h = [
+            "[color=yellow]Environment[/color] is all around you",
+            "You can add [color=#FF5500]grass[/color] and [color=#FF5500]color[/color] to make it feel nicer",
+            "Oh and there is also [color=#FF5500]music[/color]"
+        ]
         return get_helped(h)
     return "Sorry I am a derp."
 
