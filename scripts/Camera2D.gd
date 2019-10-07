@@ -1,9 +1,15 @@
 extends Camera
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var player = get_parent()
+var offset : Vector3
 
-# Called when the node enters the scene tree for the first time.
+func _init():
+    set_as_toplevel(true)
+
 func _ready():
-    camera.makecurrent()
+    offset = get_global_transform().origin
+
+func _physics_process(delta):
+    var target = player.get_global_transform().origin
+    var base = get_global_transform().basis
+    set_global_transform(Transform(base, target + offset))
