@@ -189,7 +189,8 @@ func get_help():
             "Ask me for anything you need!",
             "You can rotate yoursefl with arrow keys",
             "You might want to stand on something",
-            "Try adding [color=#FF5500]ground[/color]."
+            "Try adding [color=#FF5500]ground[/color].",
+            "Just type [color=#FF5500]ground[/color] instead of  [color=yellow]help[/color]."
         ]
         return get_helped(h)
     if not s["gravity"] and s["ground"]:
@@ -211,9 +212,12 @@ func get_help():
         h = [
             "whoa. Now you can go anywhere we want!",
             "And with anywhere I mean left and right..",
-            "What do you like? For now I can tell you about few things:\n [color=yellow]Nature[/color], [color=yellow]challenge[/color] or [color=yellow]freedom[/color]"
+            "What do you like? For now I can tell you about few things:\n [color=yellow]Nature[/color], [color=yellow]challenge[/color] or [color=yellow]freedom[/color]",
+            "Would you like to hear a [color=yellow]story[/color] instead?"
         ]
         return get_helped(h)
+    else:
+        return "Sorry I am a derp."
 
 
 func get_helped(h):
