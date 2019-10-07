@@ -5,7 +5,8 @@ var s = {
     ground = false,
     gravity = false,
     dimension = 2,
-    goal = false
+    goal = false,
+    color = false
    }
 var help = 0
 var rng = RandomNumberGenerator.new()
@@ -34,6 +35,18 @@ func on_input(input):
         "help":
             $Control.output(get_help())
             help += 1
+        
+        "color":
+            help = 0
+            if s["color"]:
+                $Control.output("I agree, that was bit too much.")
+                s["color"] = false
+                $Level.toggle_color(false)
+            else:
+                $Control.output("Wow. Such [color=#FF5500]color[/color]s.")
+                s["color"] = true
+                $Level.toggle_color(true)
+        
         "ground":
             help = 0
             if s["ground"]:
