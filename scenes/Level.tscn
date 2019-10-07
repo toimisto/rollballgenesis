@@ -49,6 +49,7 @@ material = SubResource( 8 )
 size = Vector3( 1, 5, 12 )
 
 [sub_resource type="BoxShape" id=10]
+extents = Vector3( 0.5, 2.5, 6 )
 
 [node name="Level" type="Spatial"]
 script = ExtResource( 1 )
