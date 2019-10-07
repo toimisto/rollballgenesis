@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Grass.tscn" type="PackedScene" id=2]
@@ -10,7 +10,8 @@
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=8]
 [ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/textures/wall.png" type="Texture" id=10]
-[ext_resource path="res://scenes/Heart.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/Heart.tres" type="Material" id=11]
+[ext_resource path="res://scenes/Heart.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -66,6 +67,10 @@ size = Vector3( 1, 5, 12 )
 
 [sub_resource type="BoxShape" id=13]
 extents = Vector3( 0.5, 2.5, 6 )
+
+[sub_resource type="CubeMesh" id=14]
+material = ExtResource( 11 )
+size = Vector3( 0, 0, 0 )
 
 [node name="Level" type="Spatial"]
 script = ExtResource( 1 )
@@ -175,10 +180,15 @@ shape = SubResource( 13 )
 
 [node name="Hearts" type="Spatial" parent="."]
 
-[node name="Heart" parent="Hearts" instance=ExtResource( 11 )]
-transform = Transform( -0.974898, 0, 0.222654, 0, 1, 0, -0.222654, 0, -0.974898, 0, 1.79709, 6.99085 )
+[node name="MeshInstance3" type="MeshInstance" parent="Hearts"]
+transform = Transform( -0.974898, 0, 0.222654, 0, 1, 0, -0.222654, 0, -0.974898, -4.19326, 2.68077, 6.991 )
+mesh = SubResource( 14 )
+material/0 = null
 
-[node name="Heart2" parent="Hearts" instance=ExtResource( 11 )]
+[node name="Heart" parent="Hearts" instance=ExtResource( 12 )]
+transform = Transform( -0.974898, 0, 0.222654, 0, 1, 0, -0.222654, 0, -0.974898, 0, 2.68077, 6.991 )
+
+[node name="Heart2" parent="Hearts" instance=ExtResource( 12 )]
 transform = Transform( -0.974898, 0, 0.222654, 0, 1, 0, -0.222654, 0, -0.974898, 5, 1.79709, 6.99085 )
 [connection signal="body_entered" from="Shinji" to="." method="_on_Shinji_body_entered"]
 [connection signal="body_entered" from="Goal" to="." method="_on_Goal_body_entered"]

@@ -65,6 +65,8 @@ func toggle_color(color):
         if $Grass:
             for grass in grasses:
                 grass.color(true)
+        if $Hearts/Heart:
+            $Hearts/MeshInstance3.mesh.surface_get_material(0).albedo_color = Color(1,0,0,1)
                 
         $WorldEnvironment.environment.background_color = Color(.6,.6,1,1)
     else:
@@ -86,6 +88,8 @@ func toggle_color(color):
         if $Grass:
             for grass in grasses:
                 grass.color(false)
+        if $Hearts/Heart:
+            $Hearts/MeshInstance3.mesh.surface_get_material(0).albedo_color = Color(1,1,1,1)
         $WorldEnvironment.environment.background_color = Color(1,1,1,1)
 
 func toggle_gravity(gravity):
