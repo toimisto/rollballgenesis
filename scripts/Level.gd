@@ -4,7 +4,7 @@ export (PackedScene) var Grass
 
 var SAFESPACE = {}
 var grasses = []
-
+var COLOR = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +22,7 @@ func toggle_grass(toggle):
             add_child(grass)
             grasses.append(grass)
             grass.set_global_transform(Transform(Vector3(1,0,0),Vector3(0,1,0),Vector3(0,0,1),Vector3(randf()*150-75,0,randf()*150-75)))
+        toggle_color(COLOR)
     else:
         for grass in grasses:
             remove_child(grass)
@@ -40,9 +41,11 @@ func toggle_object(object):
         remove_child(get_node(object))
     else:
         add_child(SAFESPACE[object])
+        toggle_color(COLOR)
 
 func toggle_color(color):
     if color:
+        COLOR = true
         if $Floor:
             $Floor/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(0,0.8,0,1)
         if $Walls:
@@ -57,8 +60,13 @@ func toggle_color(color):
             $Goal/Flag3.mesh.surface_get_material(0).albedo_color = Color(1,0,1,1)
             $Goal/Flag4.mesh.surface_get_material(0).albedo_color = Color(1,0,1,1)
             $Goal/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(.2,.2,.2,1)
+        if $Grass:
+            for grass in grasses:
+                grass.color(true)
+                
         $WorldEnvironment.environment.background_color = Color(.6,.6,1,1)
     else:
+        COLOR = false
         if $Floor:
             $Floor/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(1,1,1,1)
         if $Walls:
@@ -73,6 +81,9 @@ func toggle_color(color):
             $Goal/Flag3.mesh.surface_get_material(0).albedo_color = Color(1,1,1,1)
             $Goal/Flag4.mesh.surface_get_material(0).albedo_color = Color(1,1,1,1)
             $Goal/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(1,1,1,1)
+        if $Grass:
+            for grass in grasses:
+                grass.color(false)
         $WorldEnvironment.environment.background_color = Color(1,1,1,1)
 
 func toggle_gravity(gravity):
