@@ -29,6 +29,7 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    $Control.output("Type [color=yellow]help[/color] to the console bellow.")
     
     $Level.toggle_gravity(0)
     $Level.toggle_object("Floor")
@@ -43,17 +44,11 @@ func _ready():
 func on_input(input):
     input = input.to_lower()
     match input:
-        "yes":
-            $Control.output("[color=#FF0000]NO![/color]")
-        "no":
-            $Control.output("[color=#FF0000]yes![/color]")
-        "luuranki":
-            $Control.output("[color=#FF0000]oispa![/color]")
-            
-            
         "help":
             $Control.output(get_help())
             help += 1
+        "story":
+            $Control.output("This was the first ever almost full game done by jsloth and Glukoosi. \n And it was fun to make. Thank you for trying. \n Sorry, no time for awesome story. Maybe later.")
         "challenge":
             help = 0
             if challenge:
@@ -302,6 +297,8 @@ func get_help():
             "There are 10 heart shaped collectibles. try getting them all",
             "You might want to add [color=#FF5500]bridges[/color] to reach some of them"
         ]
+        if s["bridges"]:
+            h[1] = "It is okay if you don't find them all. \n Only thing that matters is you having fun finding them."
         return get_helped(h)
     if freedom and s["dimension"] == 2:
         h = [
@@ -320,7 +317,8 @@ func get_help():
         h = [
             "[color=yellow]Environment[/color] is all around you",
             "You can add [color=#FF5500]grass[/color] and [color=#FF5500]color[/color] to make it feel nicer",
-            "Oh and there is also [color=#FF5500]music[/color]"
+            "Oh and there is also [color=#FF5500]music[/color]",
+            "Would you like to hear about [color=yellow]challenge[/color] or [color=yellow]freedom[/color] instead?"
         ]
         return get_helped(h)
     return "Sorry I am a derp."
@@ -345,7 +343,7 @@ func _on_Level_goal_reached():
     if not s["walls"]:
         $Control.output("Nice! \n you reached the goal! \n Bit too easy huh?")
     else:
-        $Control.output("You made it! Are you [color=#551100]happy[/color] now?")
+        $Control.output("You made it! Are you [color=#EECCEE]happy[/color] now?")
         grv = true
 
 
