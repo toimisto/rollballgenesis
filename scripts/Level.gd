@@ -6,6 +6,8 @@ var SAFESPACE = {}
 var grasses = []
 var COLOR = false
 
+var POINTS = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -96,3 +98,8 @@ func reset_shinji():
 
 func _on_Goal_body_entered(body):
     print("testi")
+
+
+func _on_Heart_point_get():
+    POINTS += 1
+    print(POINTS)
