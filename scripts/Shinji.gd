@@ -17,5 +17,3 @@ func _physics_process(delta):
     add_torque(Vector3(-zSpeed, 0, xSpeed) * movementSpeed * -1)
     if gravity_scale != 0:
         add_central_force(movementVec)
-        
-    print(get_global_transform().origin)

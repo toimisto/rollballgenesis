@@ -122,3 +122,10 @@ func _on_Goal_body_entered(body):
 func _on_Heart_point_get():
     POINTS += 1
     print(POINTS)
+
+func is_shinji_falling():
+    if get_global_transform().origin.y < -10:
+        return true
+    return false
+    
+    
