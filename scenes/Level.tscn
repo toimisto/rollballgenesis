@@ -925,6 +925,17 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="Walls/wall26"]
 shape = SubResource( 23 )
 
+[node name="wall33" type="StaticBody" parent="Walls"]
+transform = Transform( -0.0259626, 0, -0.999663, 0, 1, 0, 0.999663, 0, -0.0259626, 32.4407, 2.5, -39.2782 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Walls/wall33"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0316086, 1.19209e-07, 0.0032297 )
+mesh = SubResource( 22 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/wall33"]
+shape = SubResource( 23 )
+
 [node name="wall27" type="StaticBody" parent="Walls"]
 transform = Transform( -0.985262, 0, -0.171053, 0, 1, 0, 0.171053, 0, -0.985262, 38.6351, 2.5, -31.4536 )
 
@@ -969,6 +980,17 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="Walls/wall30"]
 shape = SubResource( 23 )
 
+[node name="wall35" type="StaticBody" parent="Walls"]
+transform = Transform( 0.00490509, 0, -0.999988, 0, 1, 0, 0.999988, 0, 0.00490509, -34.1546, 3.25406, -3.94303 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Walls/wall35"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0316086, 1.19209e-07, 0.0032297 )
+mesh = SubResource( 22 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/wall35"]
+shape = SubResource( 23 )
+
 [node name="wall6" type="StaticBody" parent="Walls"]
 transform = Transform( 0.133046, 0, -0.99111, 0, 1, 0, 0.99111, 0, 0.133046, -8.48985, 2.5, -21.1413 )
 
@@ -984,11 +1006,22 @@ shape = SubResource( 23 )
 transform = Transform( -0.580284, 0, -0.814414, 0, 1, 0, 0.814414, 0, -0.580284, -14.6069, 2.5, 12.6617 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Walls/wall14"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0316086, 1.19209e-07, 0.0032297 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0316105, 0, 0.00323105 )
 mesh = SubResource( 22 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/wall14"]
+shape = SubResource( 23 )
+
+[node name="wall32" type="StaticBody" parent="Walls"]
+transform = Transform( -0.580284, 0, -0.814414, 0, 1, 0, 0.814414, 0, -0.580284, -15.2978, 2.5, 27.6136 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Walls/wall32"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0316105, 0, 0.00323105 )
+mesh = SubResource( 22 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/wall32"]
 shape = SubResource( 23 )
 
 [node name="wall17" type="StaticBody" parent="Walls"]
@@ -1082,7 +1115,6 @@ material/0 = null
 shape = SubResource( 23 )
 
 [node name="wall10" type="StaticBody" parent="Walls"]
-editor/display_folded = true
 transform = Transform( 0.998418, 0, 0.0562276, 0, 1, 0, -0.0562276, 0, 0.998418, -7.72801, 2.5, -33.2542 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Walls/wall10"]
@@ -1091,6 +1123,28 @@ mesh = SubResource( 22 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/wall10"]
+shape = SubResource( 23 )
+
+[node name="wall34" type="StaticBody" parent="Walls"]
+transform = Transform( 0.998418, 0, 0.0562276, 0, 1, 0, -0.0562276, 0, 0.998418, 25.6951, 2.5, -45.5203 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Walls/wall34"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0316086, 1.19209e-07, 0.0032297 )
+mesh = SubResource( 22 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/wall34"]
+shape = SubResource( 23 )
+
+[node name="wall31" type="StaticBody" parent="Walls"]
+transform = Transform( 0.998418, 0, 0.0562276, 0, 1, 0, -0.0562276, 0, 0.998418, -27.7172, 2.5, -12.5107 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Walls/wall31"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0316086, 1.19209e-07, 0.0032297 )
+mesh = SubResource( 22 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/wall31"]
 shape = SubResource( 23 )
 
 [node name="wall11" type="StaticBody" parent="Walls"]
@@ -1189,9 +1243,13 @@ transform = Transform( -0.974898, 0, 0.222654, 0, 1, 0, -0.222654, 0, -0.974898,
 
 [node name="Heart2" parent="Hearts" instance=ExtResource( 13 )]
 transform = Transform( -0.974898, 0, 0.222654, 0, 1, 0, -0.222654, 0, -0.974898, 5, 1.79709, 6.99085 )
+
+[node name="Heart5" parent="Hearts" instance=ExtResource( 13 )]
+transform = Transform( -0.974898, 0, 0.222654, 0, 1, 0, -0.222654, 0, -0.974898, 33.3793, 1.79709, -32.8301 )
 [connection signal="body_entered" from="Shinji" to="." method="_on_Shinji_body_entered"]
 [connection signal="body_entered" from="Goal" to="." method="_on_Goal_body_entered"]
 [connection signal="point_get" from="Hearts/Heart" to="." method="_on_Heart_point_get"]
 [connection signal="point_get" from="Hearts/Heart4" to="." method="_on_Heart_point_get"]
 [connection signal="point_get" from="Hearts/Heart3" to="." method="_on_Heart_point_get"]
 [connection signal="point_get" from="Hearts/Heart2" to="." method="_on_Heart_point_get"]
+[connection signal="point_get" from="Hearts/Heart5" to="." method="_on_Heart_point_get"]
