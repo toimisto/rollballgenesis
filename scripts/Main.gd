@@ -183,12 +183,35 @@ func on_input(input):
 
 func get_help():
     var h = []
-    if not s["ground"]:
+    if not s["ground"] and not s["gravity"]:
         h = [
             "Don't worry, I am here to [color=yellow]help[/color] you.",
             "Ask me for anything you need!",
+            "You can rotate yoursefl with arrow keys",
             "You might want to stand on something",
             "Try adding [color=#FF5500]ground[/color]."
+        ]
+        return get_helped(h)
+    if not s["gravity"] and s["ground"]:
+        h = [
+            "You might have a [color=#FF5500]ground[/color] to stand on\n but what is standing anyways?",
+            "Try adding a force to pull you down.",
+            "Or is it a force to pull down to you?",
+            "C'mon dude.. \n Have you heard of [color=#FF5500]gravity[/color]?",
+            "Okay.. float away if you want.."
+        ]
+        return get_helped(h)
+    if s["gravity"] and not s["ground"]:
+        h = [
+            "uh oh. I see you added [color=#FF5500]gravity[/color] but no a [color=#FF5500]ground[/color].",
+        ]
+        return get_helped(h)
+    if s["gravity"] and s["ground"] and not s["dimension"]:
+        
+        h = [
+            "whoa. Now you can go anywhere we want!",
+            "And with anywhere I mean left and right..",
+            "What do you like? For now I can tell you about few things:\n [color=yellow]Nature[/color], [color=yellow]challenge[/color] or [color=yellow]freedom[/color]"
         ]
         return get_helped(h)
 
