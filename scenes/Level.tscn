@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Grass.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=8]
 [ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/textures/wall.png" type="Texture" id=10]
+[ext_resource path="res://scenes/Heart.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Heart.gd" type="Script" id=12]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -60,6 +62,7 @@ Grass = ExtResource( 2 )
 environment = SubResource( 1 )
 
 [node name="Box" type="RigidBody" parent="."]
+editor/display_folded = true
 transform = Transform( 0.167286, 0.834039, -0.525734, -0.096219, 0.544514, 0.833215, 0.981202, -0.0887997, 0.17134, -8.3099, 5.7552, 1.33746 )
 can_sleep = false
 
@@ -84,8 +87,11 @@ mesh = SubResource( 7 )
 material/0 = null
 
 [node name="Shinji" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06083, 0 )
 gravity_scale = 1.0
+contacts_reported = 0
+contact_monitor = false
 script = ExtResource( 6 )
 
 [node name="Camera2D" type="Camera" parent="Shinji"]
@@ -125,4 +131,11 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/wall2"]
 shape = SubResource( 10 )
+
+[node name="Hearts" type="Spatial" parent="."]
+
+[node name="Heart" parent="Hearts" instance=ExtResource( 11 )]
+transform = Transform( -0.974898, 0, 0.222654, 0, 1, 0, -0.222654, 0, -0.974898, 0, 1.79709, 6.99085 )
+script = ExtResource( 12 )
+[connection signal="body_entered" from="Shinji" to="." method="_on_Shinji_body_entered"]
 [connection signal="body_entered" from="Goal" to="." method="_on_Goal_body_entered"]
