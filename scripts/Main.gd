@@ -7,7 +7,8 @@ var s = {
     dimension = 2,
     goal = false,
     color = false,
-    grass = false
+    grass = false,
+    music = false
    }
 var help = 0
 var rng = RandomNumberGenerator.new()
@@ -36,7 +37,17 @@ func on_input(input):
         "help":
             $Control.output(get_help())
             help += 1
-        
+            
+        "music":
+            help = 0
+            if s["music"]:
+                $Control.output("ssshhhhh.")
+                s["music"] = false
+                $AudioStreamPlayer.stop()
+            else:
+                $Control.output("Thank Mr. Pene.")
+                s["music"] = true
+                $AudioStreamPlayer.play()
         "color":
             help = 0
             if s["color"]:
