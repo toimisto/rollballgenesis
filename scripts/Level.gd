@@ -13,7 +13,7 @@ func _process(delta):
 
 func select_dimension(dimension):
     if dimension == 2:
-        $Camera2D.make_current()
+        $Shinji/Camera2D.make_current()
         $Shinji.set_axis_lock(4, 1)
     elif dimension == 3:
         $Shinji/Camera.make_current()
