@@ -5,8 +5,7 @@ var SAFESPACE = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
-    pass
+    SAFESPACE["Shinji"] = $Shinji.get_global_transform()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -53,3 +52,8 @@ func toggle_color(color):
 
 func toggle_gravity(gravity):
     $Shinji.set_gravity_scale(gravity)
+
+func reset_shinji():
+    $Shinji.set_global_transform(SAFESPACE["Shinji"])
+    $Shinji.set_angular_velocity(Vector3(0, 0, 0))
+    $Shinji.set_linear_velocity(Vector3(0, 0, 0))

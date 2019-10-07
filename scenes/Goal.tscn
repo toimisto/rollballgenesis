@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/Goal.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/box.png" type="Texture" id=2]
@@ -155,6 +155,9 @@ tracks/7/keys = {
 "values": [ Vector3( 0, -17.9136, 0 ), Vector3( 0, -3.92104, 0 ), Vector3( 0, 10.0715, 0 ), Vector3( 0, -3.92104, 0 ) ]
 }
 
+[sub_resource type="CylinderShape" id=17]
+radius = 0.1
+
 [node name="Goal" type="Spatial"]
 transform = Transform( 0.967134, 0, 0.254268, 0, 1, 0, -0.254268, 0, 0.967134, 0.172229, 3.53497, -0.0483767 )
 script = ExtResource( 1 )
@@ -189,3 +192,7 @@ anims/wave = SubResource( 8 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02, 0 )
+shape = SubResource( 17 )
