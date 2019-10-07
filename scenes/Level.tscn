@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/box.png" type="Texture" id=2]
@@ -32,6 +32,14 @@ size = Vector3( 30, 2, 30 )
 subdivide_width = 10
 subdivide_height = 10
 
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.772549, 0, 0, 1 )
+
+[sub_resource type="CubeMesh" id=8]
+material = SubResource( 7 )
+
+[sub_resource type="BoxShape" id=9]
+
 [node name="Level" type="Spatial"]
 script = ExtResource( 1 )
 
@@ -61,10 +69,12 @@ material/0 = null
 
 [node name="Shinji" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06083, 0 )
+gravity_scale = 1.0
 script = ExtResource( 5 )
 
 [node name="Camera" type="Camera" parent="Shinji"]
 transform = Transform( 1, 0, 0, 0, 0.839874, 0.542782, 0, -0.542782, 0.839874, 0, 4.34049, 7.28941 )
+current = true
 script = ExtResource( 6 )
 
 [node name="Camera2D" type="Camera" parent="."]
@@ -74,3 +84,28 @@ size = 20.0
 
 [node name="Goal" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1.4507, 0, 0.381402, 0, 1.5, 0, -0.381402, 0, 1.4507, 4.62512, 0.0164497, -48.2431 )
+
+[node name="Walls" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="wall" type="StaticBody" parent="Walls"]
+transform = Transform( -2.18557e-08, 0, 6, 0, 2, 0, -0.5, 0, -2.62268e-07, 0, 2, -16.567 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Walls/wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0316086, 1.19209e-07, 0.0032297 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/wall"]
+shape = SubResource( 9 )
+
+[node name="wall2" type="StaticBody" parent="Walls"]
+transform = Transform( 0.483038, 0, 1.54957, 0, 2, 0, -0.129131, 0, 5.79645, 8.151, 2, -11.233 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Walls/wall2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.170731, 1.19209e-07, 0.0663041 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/wall2"]
+shape = SubResource( 9 )

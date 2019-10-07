@@ -2,7 +2,7 @@ extends Spatial
 
 #state dict
 var s = {
-    ground = true,
+    ground = false,
     gravity = false,
     dimension = 2,
     goal = false
@@ -12,6 +12,12 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    return
+    $Level.toggle_gravity(0)
+    $Level.toggle_object("Floor")
+    $Level.toggle_object("Box")
+    $Level.toggle_object("Walls")
+    $Level.toggle_object("Goal")
     $Level.select_dimension(s.dimension)
 
 func on_input(input):
