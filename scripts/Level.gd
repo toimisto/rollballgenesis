@@ -124,7 +124,7 @@ func _on_Heart_point_get():
     print(POINTS)
 
 func is_shinji_falling():
-    if get_global_transform().origin.y < -10:
+    if $Shinji.get_global_transform().origin.y < -10:
         return true
     return false
     
