@@ -8,6 +8,8 @@ var COLOR = false
 
 var POINTS = 0
 
+signal point_getted
+signal goal_reached
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -116,15 +118,15 @@ func reset_shinji():
     $Shinji.set_linear_velocity(Vector3(0, 0, 0))
 
 func _on_Goal_body_entered(body):
-    print("testi")
+    emit_signal("goal_reached")
 
 
 func _on_Heart_point_get():
     POINTS += 1
-    print(POINTS)
+    emit_signal("point_getted")
 
 func is_shinji_falling():
-    if $Shinji.get_global_transform().origin.y < -10:
+    if $Shinji.get_global_transform().origin.y < -2:
         return true
     return false
     

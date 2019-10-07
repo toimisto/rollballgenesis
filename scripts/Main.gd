@@ -16,6 +16,10 @@ var s = {
     bridges = false
     }
 
+var gr = false
+var grv = false
+
+
 var help = 0
 var challenge = 0
 var freedom = 0
@@ -211,8 +215,12 @@ func on_input(input):
             $Level.reset_shinji()
         "quit":
             get_tree().quit()
+        "ending":
+            $clap.play()
+            $Control.output("[color=#00FF00]Congratulations[/color]! \n Thank you for being here.")
+            $Timer.start()
         _:
-            $Control.output("[color=#FF0000]Nani?![/color]")
+            $Control.output("[color=#FF0000]Sorry, I did not understand that![/color]")
             
 
 func get_help():
@@ -257,18 +265,43 @@ func get_help():
             "Would you like to hear a [color=yellow]story[/color] instead?"
         ]
         return get_helped(h)
-    if challenge and not s["goal"]:
+    if challenge and not s["goal"] and not gr:
         h = [
             "Challenges are about doing something. \n They might be easy or hard.",
             "To make a challenge: add a [color=#FF5500]goal[/color]!"
         ]
         return get_helped(h)
-    if challenge and s["goal"]:
+    if challenge and s["goal"] and not gr:
         h = [
             "Try reaching the flag!"
         ]
         if s["dimension"] == 2:
-            h = ["You might not be able to reach the goal with the [color=yellow]freedom[/color] that you have."]
+            h = ["You might not be able to reach the [color=#FF5500]goal[/color] with the [color=yellow]freedom[/color] that you have."]
+        return get_helped(h)
+    if challenge and gr and not s["walls"] and not grv:
+        h = [
+            "You have found the [color=#FF5500]goal[/color] but it is not your destiny",
+            "Add some obstacles like [color=#FF5500]walls[/color], [color=#FF5500]boxes[/color] or [color=#FF5500]ramps[/color]"
+        ]
+        return get_helped(h)
+    if challenge and gr and s["walls"] and not grv:
+        h = [
+            "Now there are walls this makes your journey harder",
+            "Try [color=yellow]reset[/color]ting yourself and then reaching \n the [color=#FF5500]goal[/color] again with the [color=#FF5500]walls[/color] up"
+        ]
+        return get_helped(h)
+    if challenge and grv and not s["hearts"]:
+        h = [
+            "You did it again but you still haven't found what you are looking for",
+            "Haven't you?",
+            "You can add more [color=#FF5500]objectives[/color] if you want more challenge."
+        ]
+        return get_helped(h)
+    if challenge and s["hearts"]:
+        h = [
+            "There are 10 heart shaped collectibles. try getting them all",
+            "You might want to add [color=#FF5500]bridges[/color] to reach some of them"
+        ]
         return get_helped(h)
     if freedom and s["dimension"] == 2:
         h = [
@@ -298,3 +331,29 @@ func get_helped(h):
         return h[help]
     else:
         return h[rng.randi_range(0, len(h)-1)]
+
+func _on_Level_point_getted():
+    var points = $Level.POINTS
+    if points < 10:
+        $Control.output("Nice! \n you have collected " + str(points) + "/10 things.")
+    if points == 10:
+        $Control.output("You have collected all hearts! \n If you are happy now, you can add [color=#FF5500]ending[/color]")
+
+
+func _on_Level_goal_reached():
+    gr = true
+    if not s["walls"]:
+        $Control.output("Nice! \n you reached the goal! \n Bit too easy huh?")
+    else:
+        $Control.output("You made it! Are you [color=#551100]happy[/color] now?")
+        grv = true
+
+
+func _on_Timer_timeout():
+    $Control.output("Bye!")
+    $Timer2.start()
+    
+
+
+func _on_Timer2_timeout():
+    get_tree().quit()

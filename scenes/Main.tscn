@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Level.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Control.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sound/FM.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/sound/clap.wav" type="AudioStream" id=5]
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 1 )
@@ -22,3 +23,17 @@ margin_bottom = 0.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -20.0
+
+[node name="clap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 2.0
+[connection signal="goal_reached" from="Level" to="." method="_on_Level_goal_reached"]
+[connection signal="point_getted" from="Level" to="." method="_on_Level_point_getted"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
