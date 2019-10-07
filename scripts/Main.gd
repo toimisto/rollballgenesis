@@ -29,7 +29,7 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    $Control.output("Type [color=yellow]help[/color] to the console bellow.")
+    $Control.output("Type [color=yellow]help[/color] to the console below.")
     
     $Level.toggle_gravity(0)
     $Level.toggle_object("Floor")
@@ -89,6 +89,8 @@ func on_input(input):
                 $Control.output("Thank Mr. Pene.")
                 s["music"] = true
                 $AudioStreamPlayer.play()
+        "objective":
+            on_input("objectives")
         "objectives":
             help = 0
             if s["hearts"]:
@@ -99,6 +101,8 @@ func on_input(input):
                 $Control.output("A reason to do, a reason to be")
                 s["hearts"] = true
                 $Level.toggle_object("Hearts")
+        "wall":
+            on_input("walls")
         "walls":
             help = 0
             if s[input]:
@@ -109,6 +113,8 @@ func on_input(input):
                 $Control.output("Now there are [color=#FF5500]walls[/color].")
                 s[input] = true
                 $Level.toggle_object("Walls")
+        "bridge":
+            on_input("bridges")
         "bridges":
             help = 0
             if s[input]:
@@ -119,6 +125,8 @@ func on_input(input):
                 $Control.output("[color=#FF5500]bridge[/color]builder 2.0")
                 s[input] = true
                 $Level.toggle_object("Bridges")
+        "box":
+            on_input("boxes")
         "boxes":
             help = 0
             if s[input]:
@@ -131,6 +139,8 @@ func on_input(input):
                 s[input] = true
                 $Level.toggle_object("Boxes")
                 $Level.toggle_gravity(s["gravity"])
+        "ramp":
+            on_input("ramps")
                 
         "ramps":
             help = 0
