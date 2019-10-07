@@ -74,7 +74,7 @@ func on_input(input):
             if environment:
                 $Control.output("Would you like to hear about [color=yellow]challenge[/color] or [color=yellow]freedom[/color] instead?")
             else:
-                $Control.output("[color=yellow]challenge[/color]s are nice indeed \n ask [color=yellow]help[/color] for more information on them.")
+                $Control.output("Your interest in [color=yellow]environment[/color] has been noted \n type [color=yellow]help[/color] to hear more.")
                 challenge = 0
                 environment = 1
                 freedom = 0
