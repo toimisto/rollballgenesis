@@ -80,6 +80,8 @@ func on_input(input):
         "reset":
             $Control.output("[color=#FF5500]Reset[/color].")
             $Level.reset_shinji()
+        "quit":
+            get_tree().quit()
         _:
             $Control.output("[color=#FF0000]Nani?![/color]")
             
