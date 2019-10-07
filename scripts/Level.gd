@@ -52,8 +52,13 @@ func toggle_color(color):
             $Floor/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(0,0.8,0,1)
         if $Walls:
             $Walls/wall/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(0.7,0,0,1)
-        if $Box:
-            $Box/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(0.67,0.54,0.18,1)
+        if $Bridges:
+            $Bridges/Bridge/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(0.6,.1,.1,1)
+            $Bridges/Bridge/MeshInstance2.mesh.surface_get_material(0).albedo_color = Color(0.2,.2,.2,1)
+        if $Boxes:
+            $Boxes/Box/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(0.67,0.54,0.18,1)
+        if $Ramps:
+            $Ramps/Ramp/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(0.3,0.2,0.02,1)
         if $Shinji:
             $Shinji/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(.5,0,1,1)
         if $Goal:
@@ -75,8 +80,14 @@ func toggle_color(color):
             $Floor/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(1,1,1,1)
         if $Walls:
             $Walls/wall/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(1,1,1,1)
-        if $Box:
-            $Box/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(1,1,1,1)
+            
+        if $Bridges:
+            $Bridges/Bridge/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(1,1,1,1)
+            $Bridges/Bridge/MeshInstance2.mesh.surface_get_material(0).albedo_color = Color(1,1,1,1)
+        if $Boxes/Box:
+            $Boxes/Box/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(1,1,1,1)
+        if $Ramps:
+            $Ramps/Ramp/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(1,1,1,1)
         if $Shinji:
             $Shinji/MeshInstance.mesh.surface_get_material(0).albedo_color = Color(1,1,1,1)
         if $Goal:
@@ -94,6 +105,10 @@ func toggle_color(color):
 
 func toggle_gravity(gravity):
     $Shinji.set_gravity_scale(gravity)
+    var gravityobjs = get_tree().get_nodes_in_group("gravity")
+    
+    for obj in gravityobjs:
+        obj.set_gravity_scale(gravity)
 
 func reset_shinji():
     $Shinji.set_global_transform(SAFESPACE["Shinji"])
