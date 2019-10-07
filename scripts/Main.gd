@@ -6,7 +6,8 @@ var s = {
     gravity = false,
     dimension = 2,
     goal = false,
-    color = false
+    color = false,
+    grass = false
    }
 var help = 0
 var rng = RandomNumberGenerator.new()
@@ -47,6 +48,17 @@ func on_input(input):
                 s["color"] = true
                 $Level.toggle_color(true)
         
+        "grass":
+            help = 0
+            if s["grass"]:
+                $Control.output("Good bye [color=#FF5500]grass[/color].")
+                s["grass"] = false
+                $Level.toggle_grass(false)
+            else:
+                $Control.output("The [color=#FF5500]grass[/color] tickles your body as you roll by.")
+                s["grass"] = true
+                $Level.toggle_grass(true)
+                
         "ground":
             help = 0
             if s["ground"]:
