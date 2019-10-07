@@ -287,7 +287,7 @@ func get_help():
             "Try reaching the flag!"
         ]
         if s["dimension"] == 2:
-            h = ["You might not be able to reach the [color=#FF5500]goal[/color] with the [color=yellow]freedom[/color] that you have."]
+            h = ["You might not be able to reach the [color=#FF5500]goal[/color] with \n the [color=yellow]freedom[/color] that you have."]
         return get_helped(h)
     if challenge and gr and not s["walls"] and not grv:
         h = [
@@ -311,7 +311,8 @@ func get_help():
     if challenge and s["hearts"]:
         h = [
             "There are 10 heart shaped collectibles. try getting them all",
-            "You might want to add [color=#FF5500]bridges[/color] to reach some of them"
+            "You might want to add [color=#FF5500]bridges[/color] to reach some of them",
+            "Just make sure you know enought about your [color=yellow]environment[/color]"
         ]
         if s["bridges"]:
             h[1] = "It is okay if you don't find them all. \n Only thing that matters is you having fun finding them."

@@ -545,7 +545,6 @@ script = ExtResource( 8 )
 transform = Transform( 1.4507, 0, 0.381402, 0, 1.5, 0, -0.381402, 0, 1.4507, 4.62512, 0.166681, -48.2431 )
 
 [node name="Bridges" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Bridge" type="StaticBody" parent="Bridges"]
 editor/display_folded = true
@@ -832,6 +831,34 @@ mesh = SubResource( 16 )
 material/0 = null
 
 [node name="CollisionShape3" type="CollisionShape" parent="Bridges/Bridge12"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.25, 0 )
+shape = SubResource( 14 )
+
+[node name="Bridge17" type="StaticBody" parent="Bridges"]
+transform = Transform( 0.999227, 0.0337023, 0.0202578, -0.0393195, 0.850585, 0.524366, 0.000441328, -0.524757, 0.851252, 0.773521, 2.14056, -35.2892 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Bridges/Bridge17"]
+shape = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Bridges/Bridge17"]
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="Bridges/Bridge17"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0.25, 0 )
+shape = SubResource( 14 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Bridges/Bridge17"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0.25, 0 )
+mesh = SubResource( 16 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="Bridges/Bridge17"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.25, 0 )
+mesh = SubResource( 16 )
+material/0 = null
+
+[node name="CollisionShape3" type="CollisionShape" parent="Bridges/Bridge17"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.25, 0 )
 shape = SubResource( 14 )
 
@@ -1158,6 +1185,7 @@ transform = Transform( -4.37114e-08, 0.642788, 0.766044, 0, 0.766044, -0.642788,
 shape = SubResource( 11 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Bridges/Bridge2"]
+transform = Transform( 1, 5.32907e-15, 3.55271e-15, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -1176,6 +1204,34 @@ mesh = SubResource( 16 )
 material/0 = null
 
 [node name="CollisionShape3" type="CollisionShape" parent="Bridges/Bridge2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.25, 0 )
+shape = SubResource( 14 )
+
+[node name="Bridge18" type="StaticBody" parent="Bridges"]
+transform = Transform( -0.64054, -0.542625, -0.543385, -0.254935, 0.817729, -0.516069, 0.724373, -0.192035, -0.662122, -46.4799, 2.64947, -33.0252 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Bridges/Bridge18"]
+shape = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Bridges/Bridge18"]
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="Bridges/Bridge18"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0.25, 0 )
+shape = SubResource( 14 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Bridges/Bridge18"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0.25, 0 )
+mesh = SubResource( 16 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="Bridges/Bridge18"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.25, 0 )
+mesh = SubResource( 16 )
+material/0 = null
+
+[node name="CollisionShape3" type="CollisionShape" parent="Bridges/Bridge18"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.25, 0 )
 shape = SubResource( 14 )
 
@@ -1738,7 +1794,7 @@ transform = Transform( -0.974898, 0, 0.222654, 0, 1, 0, -0.222654, 0, -0.974898,
 transform = Transform( -0.974898, 0, 0.222654, 0, 1, 0, -0.222654, 0, -0.974898, -20.7187, 7.06278, -35.7085 )
 
 [node name="Heart6" parent="Hearts" instance=ExtResource( 13 )]
-transform = Transform( -0.974898, 0, 0.222654, 0, 1, 0, -0.222654, 0, -0.974898, -9.61307, 7.15466, 16.9414 )
+transform = Transform( -0.974898, 0, 0.222654, 0, 1, 0, -0.222654, 0, -0.974898, -9.61307, 2.00194, 50.2788 )
 
 [node name="Heart5" parent="Hearts" instance=ExtResource( 13 )]
 transform = Transform( -0.974898, 0, 0.222654, 0, 1, 0, -0.222654, 0, -0.974898, 71.5996, 1.79709, -72.2082 )
