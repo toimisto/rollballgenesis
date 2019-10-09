@@ -1292,7 +1292,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.25, 0 )
 shape = SubResource( 14 )
 
 [node name="Walls" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="wall" type="StaticBody" parent="Walls"]
 editor/display_folded = true
@@ -1462,12 +1461,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0316086, 1.19209e-07, 0.0032
 mesh = SubResource( 22 )
 material/0 = null
 
-[node name="MeshInstance2" type="MeshInstance" parent="Walls/wall37"]
-transform = Transform( 0.954269, 0, -0.29895, 0, 1, 0, 0.29895, 0, 0.954269, -4.57406, 0, -18.7235 )
+[node name="CollisionShape" type="CollisionShape" parent="Walls/wall37"]
+shape = SubResource( 23 )
+
+[node name="wall42" type="StaticBody" parent="Walls"]
+transform = Transform( 0.996586, 0, 0.0825653, 0, 1, 0, -0.0825653, 0, 0.996586, 49.5215, 2.5, -71.8642 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Walls/wall42"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0316086, 1.19209e-07, 0.0032297 )
 mesh = SubResource( 22 )
 material/0 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="Walls/wall37"]
+[node name="CollisionShape" type="CollisionShape" parent="Walls/wall42"]
 shape = SubResource( 23 )
 
 [node name="wall38" type="StaticBody" parent="Walls"]

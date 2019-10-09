@@ -48,7 +48,7 @@ func on_input(input):
             $Control.output(get_help())
             help += 1
         "story":
-            $Control.output("This was the first ever almost full game done by jsloth and Glukoosi. \n And it was fun to make. Thank you for trying. \n Sorry, no time for awesome story. Maybe later.")
+            $Control.output("This was the first ever almost full game done \n by jsloth and Glukoosi. \n And it was fun to make. Thank you for trying it. \n Sorry, no time for awesome story. Maybe later.")
         "challenge":
             help = 0
             if challenge:
@@ -163,6 +163,8 @@ func on_input(input):
                 $Control.output("Nice. Life needs [color=#FF5500]goal[/color]s!")
                 s[input] = true
                 $Level.toggle_object("Goal")
+        "colour":
+            on_input("color")        
         "color":
             help = 0
             if s["color"]:
@@ -216,6 +218,8 @@ func on_input(input):
                 s["dimension"] = 2
                 $Level.select_dimension(2)
         "reset":
+            if $Level.is_shinji_falling():
+                help = 0
             $Control.output("[color=#FF5500]Reset[/color].")
             $Level.reset_shinji()
         "quit":
@@ -248,7 +252,7 @@ func get_help():
         h = [
             "Don't worry, I am here to [color=yellow]help[/color] you.",
             "Ask me for anything you need!",
-            "You can rotate yoursefl with arrow keys",
+            "You can rotate yourself with arrow keys",
             "You might want to stand on something",
             "Try adding [color=#FF5500]ground[/color].",
             "Just type [color=#FF5500]ground[/color] instead of [color=yellow]help[/color]."
@@ -303,7 +307,7 @@ func get_help():
         return get_helped(h)
     if challenge and grv and not s["hearts"]:
         h = [
-            "You did it again but you still haven't found what you are looking for",
+            "You did it again!\n But you still haven't found what you are looking for",
             "Haven't you?",
             "You can add more [color=#FF5500]objectives[/color] if you want more challenge."
         ]
@@ -314,13 +318,17 @@ func get_help():
             "You might want to add [color=#FF5500]bridges[/color] to reach some of them",
             "Just make sure you know enought about your [color=yellow]environment[/color]"
         ]
-        if s["bridges"]:
+        if s["color"]:
+            h[2] = "Remember you can also remove anything you have added."
+        if s["bridges"] and not s["ramps"]:
+            h[1] = "Remember to to check out\n [color=#FF5500]ramps[/color] and [color=#FF5500]boxes[/color] too"
+        if s["bridges"] and s["ramps"]:
             h[1] = "It is okay if you don't find them all. \n Only thing that matters is you having fun finding them."
         return get_helped(h)
     if freedom and s["dimension"] == 2:
         h = [
             "Until now I have only quided you to restrict your [color=yellow]freedom[/color].",
-            "With [color=yellow]freedom[/color] comes responsibility, I'm sure you can take it.",
+            "With [color=yellow]freedom[/color] comes responsibility,\n I'm sure you can take it.",
             "Try adding another [color=#FF5500]dimension[/color]"
         ]
         return get_helped(h)
@@ -342,10 +350,10 @@ func get_help():
 
 
 func get_helped(h):
-    if help <= len(h) - 1:
-        return h[help]
-    else:
-        return h[rng.randi_range(0, len(h)-1)]
+    if help > len(h) - 1:
+        help = 0
+    return h[help]
+
 
 func _on_Level_point_getted():
     var points = $Level.POINTS
