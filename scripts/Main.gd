@@ -42,7 +42,7 @@ func _ready():
     $Level.select_dimension(s.dimension)
 
 func on_input(input):
-    input = input.to_lower()
+    input = input.to_lower().replace(" ", "")
     match input:
         "help":
             $Control.output(get_help())
@@ -228,6 +228,8 @@ func on_input(input):
             $clap.play()
             $Control.output("[color=#00FF00]Congratulations[/color]! \n Thank you for being here.")
             $Timer.start()
+        "":
+            pass
         _:
             $Control.output("[color=#FF0000]Sorry, I did not understand that![/color]")
             
@@ -346,7 +348,8 @@ func get_help():
             "Would you like to hear about [color=yellow]challenge[/color] or [color=yellow]freedom[/color] instead?"
         ]
         return get_helped(h)
-    return "Sorry I am a derp."
+    return "Sorry. You have made me confused \n try asking about [color=yellow]challenge[/color], [color=yellow]freedom[/color] or [color=yellow]environment[/color]"
+    
 
 
 func get_helped(h):
